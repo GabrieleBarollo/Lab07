@@ -11,6 +11,10 @@ def main(page: ft.Page):
     my_controller = Controller(my_view, my_model)
     my_view.set_controller(my_controller)
     my_view.load_interface()
+    my_controller.compila_dd_museo()
+    my_controller.compila_dd_epoca()
+
+
 
 
 ft.app(target=main)

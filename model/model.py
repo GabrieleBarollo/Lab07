@@ -17,13 +17,39 @@ class Model:
     def get_artefatti_filtrati(self, museo:str, epoca:str):
         """Restituisce la lista di tutti gli artefatti filtrati per museo e/o epoca (filtri opzionali)."""
         # TODO
+        if museo == "Nessun filtro" and epoca == "Nessun filtro":
+            ist = ArtefattoDAO()
+            lista = ist.prima_query()
+            return lista
+        elif museo != "Nessun filtro" and epoca == "Nessun filtro":
+            ist = ArtefattoDAO()
+            lista = ist.seconda_query(museo)
+            return lista
+        elif museo == "Nessun filtro" and epoca != "Nessun filtro":
+            ist = ArtefattoDAO()
+            lista = ist.terza_query(epoca)
+            return lista
+        else:
+            ist = ArtefattoDAO()
+            lista = ist.quarta_query(museo,epoca)
+            return lista
+
+
 
     def get_epoche(self):
         """Restituisce la lista di tutte le epoche."""
         # TODO
+        ist = ArtefattoDAO()
+        epoche = ist.popolo_dd_epoca()
+        return epoche
+
 
     # --- MUSEI ---
     def get_musei(self):
         """ Restituisce la lista di tutti i musei."""
         # TODO
+        ist = ArtefattoDAO()
+        musei = ist.popolo_dd_museo()
+        return musei
+
 
